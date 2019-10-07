@@ -14,7 +14,13 @@ RoundMemory::RoundMemory(ushort size)
     Initialize(size);
 }
 
-
+RoundMemory::RoundMemory(RoundMemory & roundMemory)
+{
+    datas = new datatype[alloc_size = roundMemory.alloc_size];
+    for (ptr = 0; ptr < alloc_size; ++ptr)
+        datas[ptr] = roundMemory.datas[ptr];
+    ptr = roundMemory.ptr;
+}
 
 RoundMemory::Initialize(ushort size)
 {
