@@ -16,7 +16,7 @@ T RoundMemory::avg() {
     return (sum / T(size));
 }
 
-T RoundMemory::write(T sample) {
+T RoundMemory::append(T sample) {
     samples[(cptr %= size)++] = sample;
     return avg();
 }

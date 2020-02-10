@@ -21,7 +21,7 @@ class RoundMemory {
     RoundMemory(unsigned char _size);
 
     T avg();
-    T write(T sample);
+    T append(T sample);
 
     ~RoundMemory();
 }
