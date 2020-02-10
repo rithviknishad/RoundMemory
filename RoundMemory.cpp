@@ -1,53 +1,24 @@
 #include "RoundMemory.h"
 
-RoundMemory::RoundMemory()
-{
-    if (datas)
-        delete[] datas;
-    datas = ptr = alloc_size = 0x0;
+RoundMemory::RoundMemory() { samples = size = cptr = 0; }
+
+RoundMemory::RoundMemory(unsigned char _size, T initValue) {
+    samples = new T[size = _size];
+    for (cptr = 0; cptr < size; ++cptr)
+        samples[cptr] = initValue;
+    cptr = 0;
 }
 
-RoundMemory::RoundMemory(ushort size)
-{
-    if (datas)
-        delete[] datas;
-    Initialize(size);
+T RoundMemory::avg() {
+    T sum = T(0);
+    for (unsigned char i = 0; i < size; ++i)
+        sum += samples[i];
+    return (sum / T(size));
 }
 
-RoundMemory::RoundMemory(RoundMemory & roundMemory)
-{
-    datas = new datatype[alloc_size = roundMemory.alloc_size];
-    for (ptr = 0; ptr < alloc_size; ++ptr)
-        datas[ptr] = roundMemory.datas[ptr];
-    ptr = roundMemory.ptr;
-}
-
-RoundMemory::Initialize(ushort size)
-{
-    datas = new datatype[alloc_size = size];
-    for (ptr = 0; ptr < alloc_size; ++ptr)
-        datas[ptr] = (datatype)0;
-    ptr = 0;
-}
-
-datatype RoundMemory::avg()
-{
-    datatype sum = (datatype)0;
-    for (int i = 0; i < alloc_size; ++i)
-        sum += datas[i];
-    return (sum / ((datatype)alloc_size));
-}
-
-datatype RoundMemory::write(datatype data)
-{
-    if (ptr == alloc_size && alloc_size)
-        ptr = 0;
-    datas[ptr++] = data;
+T RoundMemory::write(T sample) {
+    samples[(cptr %= size)++] = sample;
     return avg();
 }
 
-RoundMemory::~RoundMemory()
-{
-    if (datas)
-        delete[] datas;
-}
+RoundMemory::~RoundMemory() { if (samples) delete[] samples; }

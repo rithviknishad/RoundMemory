@@ -1,34 +1,27 @@
 /*
  *  Name:           ROUND MEMORY
- *  Header:         round_memory.h
+ *  Header:         RoundMemory.h
  *  
  *  Description:    
  *      Round Memory Management for Realtime Datasampling and processing 
  * 
  *  Author:         Rithvik Nishad (https://github.com/rithviknishad)
- *  Created on:     October 7, 2019 [13:42 IST]
- *  Last Updated:   October 7, 2019 [14:18 IST]
  * 
  */
 
-template<typename datatype>
-class RoundMemory
-{
-    private:
-
-    datatype * datas;
-    ushort alloc_size, ptr;
+template<typename T>
+class RoundMemory {
+    
+    T * samples;
+    unsigned char size, cptr;
 
     public:
 
     RoundMemory();
-    RoundMemory(ushort size);
-    RoundMemory(RoundMemory & roundMemory);
+    RoundMemory(unsigned char _size);
 
-    void Initialize(ushort size);
-
-    datatype avg();
-    datatype write(datatype data);
+    T avg();
+    T write(T sample);
 
     ~RoundMemory();
-};
+}
