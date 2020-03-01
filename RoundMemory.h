@@ -3,7 +3,7 @@
  *  Header:         RoundMemory.h
  *  
  *  Description:    
- *      Round Memory Management for Realtime Datasampling and processing 
+ *      Round Memory Averaging for Realtime Datasampling and processing 
  * 
  *  Author:         Rithvik Nishad (https://github.com/rithviknishad)
  * 
@@ -13,12 +13,12 @@ template<typename T>
 class RoundMemory {
     
     T * samples;
-    unsigned char size, cptr;
+    uint8_t size, cptr;
 
     public:
 
     RoundMemory();
-    RoundMemory(unsigned char _size);
+    RoundMemory(uint8_t _size, T initValue);
 
     T avg();
     T append(T sample);

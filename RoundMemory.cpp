@@ -2,7 +2,7 @@
 
 RoundMemory::RoundMemory() { samples = size = cptr = 0; }
 
-RoundMemory::RoundMemory(unsigned char _size, T initValue) {
+RoundMemory::RoundMemory(uint8_t _size, T initValue) {
     samples = new T[size = _size];
     for (cptr = 0; cptr < size; ++cptr)
         samples[cptr] = initValue;
@@ -11,14 +11,15 @@ RoundMemory::RoundMemory(unsigned char _size, T initValue) {
 
 T RoundMemory::avg() {
     T sum = T(0);
-    for (unsigned char i = 0; i < size; ++i)
+    for (uint8_t i = 0; i < size; ++i)
         sum += samples[i];
     return (sum / T(size));
 }
 
 T RoundMemory::append(T sample) {
+    T u_avg = avg();
     samples[(cptr %= size)++] = sample;
-    return avg();
+    return u_avg - avg();
 }
 
 RoundMemory::~RoundMemory() { if (samples) delete[] samples; }
