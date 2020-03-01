@@ -29,3 +29,8 @@ Conservative branch is much faster in performance and requires very less space (
     sensorReadings.append( sensor.getReading() );
     float delta = u - sensorReadings.avgerage;
 ```
+
+
+### Memory Consumption
+
+6 bytes per RoundMemory object fixed.
