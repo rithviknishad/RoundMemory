@@ -1,25 +1,16 @@
 #include "RoundMemory.h"
 
-RoundMemory::RoundMemory() { samples = size = cptr = 0; }
+RoundMemory::RoundMemory() { average = size = 0; }
 
-RoundMemory::RoundMemory(uint8_t _size, T initValue) {
-    samples = new T[size = _size];
-    for (cptr = 0; cptr < size; ++cptr)
-        samples[cptr] = initValue;
-    cptr = 0;
+RoundMemory::RoundMemory(uint8_t _size, float initValue) {
+    size = _size;
+    average = initValue;
 }
 
-T RoundMemory::avg() {
-    T sum = T(0);
-    for (uint8_t i = 0; i < size; ++i)
-        sum += samples[i];
-    return (sum / T(size));
+float RoundMemory::avg() { return average; }
+
+float RoundMemory::append(float sample) { 
+    return average - (average = (((average * size) - average) + sample) / size);
 }
 
-T RoundMemory::append(T sample) {
-    T u_avg = avg();
-    samples[(cptr %= size)++] = sample;
-    return u_avg - avg();
-}
-
-RoundMemory::~RoundMemory() { if (samples) delete[] samples; }
+RoundMemory::~RoundMemory() { }

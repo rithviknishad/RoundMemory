@@ -1,5 +1,5 @@
 /*
- *  Name:           ROUND MEMORY
+ *  Name:           Round Memory (CONSERVATIVE)
  *  Header:         RoundMemory.h
  *  
  *  Description:    
@@ -9,19 +9,18 @@
  * 
  */
 
-template<typename T>
 class RoundMemory {
-    
-    T * samples;
-    uint8_t size, cptr;
+    uint8_t size;
 
     public:
 
-    RoundMemory();
-    RoundMemory(uint8_t _size, T initValue);
+    float average;
 
-    T avg();
-    T append(T sample);
+    RoundMemory();
+    RoundMemory(uint8_t _size, float initValue);
+
+    float avg();
+    float append(float sample);
 
     ~RoundMemory();
 }
