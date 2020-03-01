@@ -24,4 +24,4 @@ class RoundMemory {
     T append(T sample);
 
     ~RoundMemory();
-}
+};
