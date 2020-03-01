@@ -1,4 +1,4 @@
-# ROUND MEMORY
+# Round Memory (Conservative)
 Round Memory Averaging for Realtime Datasampling and processing.
 Conservative branch is much faster in performance and requires very less space (not proportional to size like master branch).
 
