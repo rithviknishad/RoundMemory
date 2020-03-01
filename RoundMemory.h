@@ -10,14 +10,14 @@
  */
 
 class RoundMemory {
-    uint8_t size;
+    unsigned short size;
 
     public:
 
     float average;
 
     RoundMemory();
-    RoundMemory(uint8_t _size, float initValue);
+    RoundMemory(unsigned short _size, float initValue);
 
     float avg();
     float append(float sample);

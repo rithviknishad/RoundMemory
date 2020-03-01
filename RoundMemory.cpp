@@ -2,7 +2,7 @@
 
 RoundMemory::RoundMemory() { average = size = 0; }
 
-RoundMemory::RoundMemory(uint8_t _size, float initValue) {
+RoundMemory::RoundMemory(unsigned short _size, float initValue) {
     size = _size;
     average = initValue;
 }
