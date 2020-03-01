@@ -27,3 +27,10 @@ Round Memory Averaging for Realtime Datasampling and processing
     sensorReadings.append( sensor.getReading() );
     float delta = u - sensorReadings.avg();
 ```
+
+### Memory usage
+
+4 + (size * sizeof(datatype T)). increases linearly as size is higher.
+Higher the size, more cpu cycles will be used to perform avg();
+
+Use conservative-branch for low memory application, and for much higher performance.
