@@ -13,12 +13,12 @@ template<typename T>
 class RoundMemory {
     
     T * samples;
-    uint8_t size, cptr;
+    unsigned short size, cptr;
 
     public:
 
     RoundMemory();
-    RoundMemory(uint8_t _size, T initValue);
+    RoundMemory(unsigned short _size, T initValue);
 
     T avg();
     T append(T sample);
