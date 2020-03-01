@@ -23,4 +23,4 @@ class RoundMemory {
     float append(float sample);
 
     ~RoundMemory();
-}
+};
