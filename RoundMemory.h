@@ -9,6 +9,9 @@
  * 
  */
 
+#ifndef __ROUND_MEMORY_H
+#define __ROUND_MEMORY_H
+
 template<typename T>
 class RoundMemory {
     
@@ -25,3 +28,4 @@ class RoundMemory {
 
     ~RoundMemory();
 };
+#endif
