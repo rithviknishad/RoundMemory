@@ -9,6 +9,9 @@
  * 
  */
 
+#ifndef __ROUND_MEMORY_H
+#define __ROUND_MEMORY_H
+
 class RoundMemory {
     unsigned short size;
 
@@ -24,3 +27,5 @@ class RoundMemory {
 
     ~RoundMemory();
 };
+
+#endif
